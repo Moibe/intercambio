@@ -1,0 +1,224 @@
+/* Lenguaje visual compartido del app (glass sobre el gradiente). Sin @layer para
+   que gane sobre el base de Tailwind. */
+
+.pagina {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 0.5rem 3rem;
+}
+
+.pagina h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.25rem;
+}
+.pagina h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+.sub {
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 1.5rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+.campo label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.input,
+.select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font: inherit;
+  outline: none;
+}
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.input:focus,
+.select:focus {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+}
+.select option {
+  color: #111;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+.btn:hover {
+  background: rgba(255, 255, 255, 0.26);
+  transform: translateY(-1px);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-primario {
+  background: #fff;
+  color: #1e3a8a;
+  border-color: #fff;
+}
+.btn-primario:hover {
+  background: #eef2ff;
+}
+.btn-peligro {
+  border-color: rgba(255, 150, 150, 0.8);
+  color: #ffd1d1;
+}
+.btn-peligro:hover {
+  background: rgba(255, 80, 80, 0.3);
+}
+.btn-chico {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.fila {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.fila-inline .input {
+  flex: 1;
+  min-width: 160px;
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.lista li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
+}
+.lista li:last-child {
+  border-bottom: none;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.chip-ok {
+  background: rgba(74, 222, 128, 0.25);
+  border-color: rgba(74, 222, 128, 0.6);
+}
+.chip-aviso {
+  background: rgba(251, 191, 36, 0.25);
+  border-color: rgba(251, 191, 36, 0.6);
+}
+
+.aviso {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid;
+}
+.aviso-error {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: rgba(248, 113, 113, 0.6);
+}
+.aviso-ok {
+  background: rgba(74, 222, 128, 0.18);
+  border-color: rgba(74, 222, 128, 0.5);
+}
+.aviso-info {
+  background: rgba(251, 191, 36, 0.18);
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+.tenue {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.85rem;
+}
+
+/* Modal de confirmación (sin confirm() nativo) */
+.modal-fondo {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 60, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+.modal {
+  width: min(440px, 100%);
+  background: rgba(30, 58, 138, 0.92);
+  border: 1px solid #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.modal h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+.modal p {
+  margin: 0 0 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+.modal-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}

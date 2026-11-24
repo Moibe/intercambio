@@ -1,0 +1,372 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "ce173894-6932-46c4-b5db-8535ba8226e2",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "asignaciones": {
+      "name": "asignaciones",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "sorteo_id": {
+          "name": "sorteo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "da_id": {
+          "name": "da_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "recibe_id": {
+          "name": "recibe_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "visto": {
+          "name": "visto",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "asignaciones_unq": {
+          "name": "asignaciones_unq",
+          "columns": [
+            "sorteo_id",
+            "da_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "asignaciones_sorteo_id_sorteos_id_fk": {
+          "name": "asignaciones_sorteo_id_sorteos_id_fk",
+          "tableFrom": "asignaciones",
+          "tableTo": "sorteos",
+          "columnsFrom": [
+            "sorteo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "asignaciones_da_id_miembros_id_fk": {
+          "name": "asignaciones_da_id_miembros_id_fk",
+          "tableFrom": "asignaciones",
+          "tableTo": "miembros",
+          "columnsFrom": [
+            "da_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "asignaciones_recibe_id_miembros_id_fk": {
+          "name": "asignaciones_recibe_id_miembros_id_fk",
+          "tableFrom": "asignaciones",
+          "tableTo": "miembros",
+          "columnsFrom": [
+            "recibe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "exclusiones": {
+      "name": "exclusiones",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "grupo_id": {
+          "name": "grupo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "miembro_id": {
+          "name": "miembro_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "excluido_id": {
+          "name": "excluido_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "exclusiones_unq": {
+          "name": "exclusiones_unq",
+          "columns": [
+            "miembro_id",
+            "excluido_id"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "exclusiones_grupo_id_grupos_id_fk": {
+          "name": "exclusiones_grupo_id_grupos_id_fk",
+          "tableFrom": "exclusiones",
+          "tableTo": "grupos",
+          "columnsFrom": [
+            "grupo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "exclusiones_miembro_id_miembros_id_fk": {
+          "name": "exclusiones_miembro_id_miembros_id_fk",
+          "tableFrom": "exclusiones",
+          "tableTo": "miembros",
+          "columnsFrom": [
+            "miembro_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "exclusiones_excluido_id_miembros_id_fk": {
+          "name": "exclusiones_excluido_id_miembros_id_fk",
+          "tableFrom": "exclusiones",
+          "tableTo": "miembros",
+          "columnsFrom": [
+            "excluido_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "grupos": {
+      "name": "grupos",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "admin_token": {
+          "name": "admin_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "creado": {
+          "name": "creado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "grupos_admin_token_unique": {
+          "name": "grupos_admin_token_unique",
+          "columns": [
+            "admin_token"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "miembros": {
+      "name": "miembros",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "grupo_id": {
+          "name": "grupo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "token": {
+          "name": "token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "creado": {
+          "name": "creado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "miembros_token_unique": {
+          "name": "miembros_token_unique",
+          "columns": [
+            "token"
+          ],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {
+        "miembros_grupo_id_grupos_id_fk": {
+          "name": "miembros_grupo_id_grupos_id_fk",
+          "tableFrom": "miembros",
+          "tableTo": "grupos",
+          "columnsFrom": [
+            "grupo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "sorteos": {
+      "name": "sorteos",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "grupo_id": {
+          "name": "grupo_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "nombre": {
+          "name": "nombre",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "sin_repetir": {
+          "name": "sin_repetir",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": true
+        },
+        "creado": {
+          "name": "creado",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "sorteos_grupo_id_grupos_id_fk": {
+          "name": "sorteos_grupo_id_grupos_id_fk",
+          "tableFrom": "sorteos",
+          "tableTo": "grupos",
+          "columnsFrom": [
+            "grupo_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
